@@ -50,28 +50,27 @@
 
 (require 'init-editing-utils)
 
-(require 'init-darcs)
-(require 'init-git)
+;(require 'init-git)
 
-(require 'init-textile)
-(require 'init-markdown)
-(require 'init-csv)
-(require 'init-javascript)
-(require 'init-org)
-(require 'init-nxml)
-(require 'init-css)
-(require 'init-haml)
+;(require 'init-textile)
+;(require 'init-markdown)
+;(require 'init-csv)
+;(require 'init-javascript)
+;(require 'init-org)
+;(require 'init-nxml)
+;(require 'init-css)
+;(require 'init-haml)
 (require 'init-python-mode)
-(require 'init-haskell)
-(require 'init-ruby-mode)
-(require 'init-rails)
-(require 'init-sql)
+;(require 'init-haskell)
+;(require 'init-ruby-mode)
+;(require 'init-rails)
+;(require 'init-sql)
 
 (require 'init-paredit)
 (require 'init-lisp)
-(require 'init-slime)
+;(require 'init-slime)
 (require 'init-clojure)
-(require 'init-common-lisp)
+;(require 'init-common-lisp)
 
 (when *spell-check-support-enabled*
   (require 'init-spelling))
@@ -79,23 +78,19 @@
 (require 'init-marmalade)
 (require 'init-misc)
 
-(require 'init-dash)
-(require 'init-ledger)
 ;; Extra packages which don't require any configuration
 
 
-(require-package 'htmlize)
-(require-package 'dsvn)
-(when *is-a-mac*
-  (require-package 'osx-location))
-(require-package 'regex-tool)
+;(require-package 'htmlize)
+;(require-package 'dsvn)
+;(require-package 'regex-tool)
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
 ;;----------------------------------------------------------------------------
-(require 'server)
-(unless (server-running-p)
-  (server-start))
+;(require 'server)
+;(unless (server-running-p)
+;  (server-start))
 
 
 ;;----------------------------------------------------------------------------
