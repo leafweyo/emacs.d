@@ -77,6 +77,7 @@
 
 (require 'init-marmalade)
 (require 'init-misc)
+(require 'init-evil)
 
 ;; Extra packages which don't require any configuration
 
