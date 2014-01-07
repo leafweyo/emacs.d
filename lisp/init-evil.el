@@ -1,16 +1,13 @@
 (require-package 'evil)
 (require-package 'evil-leader)
 (global-evil-leader-mode)
-(evil-leader/set-leader "<SPC>")
+(evil-leader/set-leader ";")
+(require-package 'key-chord)
+(key-chord-mode 1)
 (require-package 'evil-nerd-commenter)
 (evilnc-default-hotkeys)
 (evil-mode 1)
-(evil-leader/set-key
-  ;; "k" 'windmove-up
-  ;; "j" 'windmove-down
-  ;; "h" 'windmove-left
-  ;; "l" 'windmove-right
-  "b" 'switch-to-buffer)
+
 (define-key evil-normal-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
 (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
@@ -21,9 +18,15 @@
 ;; (evil-ex-define-cmd "b " 'find-file)
 (define-key evil-ex-map "e " 'find-file)
 (define-key evil-ex-map "b " 'ido-switch-buffer)
-(define-key evil-normal-state-map ";f" 'save-buffer)
-(define-key evil-insert-state-map ";f" (lambda () (interactive) (progn (save-buffer) (evil-normal-state))))
+;; (define-key evil-normal-state-map ";f" 'save-buffer)
+
+
+(define-key evil-normal-state-map (kbd "SPC") 'evil-ex)
+;;(define-key evil-insert-state-map )
+(key-chord-define evil-insert-state-map ";f" (lambda () (interactive) (progn (save-buffer) (evil-normal-state))))
+(evil-leader/set-key "f" 'save-buffer)
 (evil-leader/set-key
+  ;; "b" 'switch-to-buffer
   "c" 'evilnc-comment-or-uncomment-lines
   ;; "cl" 'evilnc-comment-or-uncomment-to-the-line
   ;; "cc" 'evilnc-copy-and-comment-lines
