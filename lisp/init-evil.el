@@ -46,4 +46,5 @@
   )
 (global-set-key (kbd "C-;") 'smex)
 (defalias 'list-buffers 'ibuffer)
+(defun evil-symsearch () (interactive) (setq evil-symbol-word-search t))
 (provide 'init-evil)

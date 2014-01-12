@@ -2,7 +2,7 @@
 ;;; a number of other files.
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(require 'init-benchmarking) ;; Measure startup time
+;; (require 'init-benchmarking) ;; Measure startup time
 
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
@@ -39,7 +39,7 @@
 (require 'init-ibuffer)
 (require 'init-flycheck)
 
-(require 'init-recentf)
+;; (require 'init-recentf)
 (require 'init-ido)
 (require 'init-hippie-expand)
 (require 'init-auto-complete)
@@ -97,6 +97,7 @@
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
 ;;----------------------------------------------------------------------------
+(setq vc-handled-backends ())
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
   (load custom-file))
@@ -115,10 +116,10 @@
 ;;----------------------------------------------------------------------------
 (require 'init-locales)
 
-(add-hook 'after-init-hook
-          (lambda ()
-            (message "init completed in %.2fms"
-                     (sanityinc/time-subtract-millis after-init-time before-init-time))))
+;; (add-hook 'after-init-hook
+          ;; (lambda ()
+          ;;   (message "init completed in %.2fms"
+          ;;            (sanityinc/time-subtract-millis after-init-time before-init-time))))
 
 
 (provide 'init)
