@@ -28,13 +28,13 @@
  scroll-preserve-screen-position 'always
  set-mark-command-repeat-pop t
  show-trailing-whitespace t
- tooltip-delay 1.5
+ tooltip-delay 1.0
  truncate-lines nil
  truncate-partial-width-windows nil
  visible-bell t)
 
-(when *is-a-mac*
-  (setq-default locate-command "mdfind"))
+;; (when *is-a-mac*
+;;   (setq-default locate-command "mdfind"))
 
 (global-auto-revert-mode)
 (setq global-auto-revert-non-file-buffers t
@@ -120,10 +120,6 @@
 ;;----------------------------------------------------------------------------
 ;; To be able to M-x without meta
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
-
-;; Vimmy alternatives to M-^ and C-u M-^
-(global-set-key (kbd "C-c j") 'join-line)
-(global-set-key (kbd "C-c J") (lambda () (interactive) (join-line 1)))
 
 (global-set-key (kbd "C-.") 'set-mark-command)
 (global-set-key (kbd "C-x C-.") 'pop-global-mark)

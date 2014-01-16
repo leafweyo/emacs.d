@@ -1,15 +1,19 @@
+(require-package 'ace-jump-buffer)
+(require 'ace-jump-buffer)
 (require-package 'evil)
 (require-package 'evil-leader)
 (global-evil-leader-mode)
 (evil-leader/set-leader ";")
-(require-package 'key-chord)
-(setq key-chord-two-keys-delay 1)
+;; (require-package 'key-chord)
+(require 'key-chord)
+(setq key-chord-two-keys-delay 0.5)
 (setq key-chord-one-keys-delay 1)
 (key-chord-mode 1)
 (require-package 'evil-nerd-commenter)
 (evilnc-default-hotkeys)
 (evil-mode 1)
 
+(global-set-key (kbd "C-s") (lambda () (interactive) (progn (save-buffer) (evil-normal-state))))
 (define-key evil-normal-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
 (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
@@ -47,7 +51,29 @@
   ;; "sl" 'split-window-right
   ;; "sj" 'split-window-below
   )
+
+(evil-leader/set-key-for-mode 'clojure-mode "ef" 'cider-eval-defun-at-point)
+(evil-leader/set-key-for-mode 'clojure-mode "eb" 'cider-load-current-buffer)
+
 (global-set-key (kbd "C-;") 'smex)
 (defalias 'list-buffers 'ibuffer)
 (defun evil-symsearch () (interactive) (setq evil-symbol-word-search t))
+
+(defvar my-keys-mode-map (make-keymap) "my-keys-minor-mode keymap.")
+(define-key my-keys-mode-map (kbd "C-j") 'ace-jump-buffer)
+(define-minor-mode my-keys-mode
+  "A minor mode so that my key settings override annoying major modes."
+  t " my-keys" 'my-keys-minor-mode-map)
+;; (defun my-minibuffer-setup-hook ()
+;;   (my-keys-minor-mode 0))
+;; (add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
+(defadvice load (after give-my-keybindings-priority)
+  "Try to ensure that my keybindings always have priority."
+  (if (not (eq (car (car minor-mode-map-alist)) 'my-keys-mode))
+      (let ((mykeys (assq 'my-keys-mode minor-mode-map-alist)))
+        (assq-delete-all 'my-keys-mode minor-mode-map-alist)
+        (add-to-list 'minor-mode-map-alist mykeys))))
+(ad-activate 'load)
+(my-keys-mode 1)
+
 (provide 'init-evil)
