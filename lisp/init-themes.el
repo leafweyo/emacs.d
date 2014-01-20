@@ -46,15 +46,24 @@
       (red-0 "#ff4b4b")  (black-4 "#3a3a3a") (black-5 "#303030") (black-6 "#000000") (orange-0 "#ffaf87")
       (green-00 "#d7ff87") (yellow-00 "#ffffaf") (orange-00 "#ffd787") (blue-00 "#d7d7ff") (purple-00 "#e6a8df"))
   (custom-set-faces
-   `(rainbow-delimiters-depth-1-face ((,class (:bold nil :foreground ,blue-1))))
-   `(rainbow-delimiters-depth-2-face ((,class (:bold nil :foreground ,green-2))))
-   `(rainbow-delimiters-depth-3-face ((,class (:bold nil :foreground ,magenta-2))))
-   `(rainbow-delimiters-depth-4-face ((,class (:bold nil :foreground ,cyan-3))))
-   `(rainbow-delimiters-depth-5-face ((,class (:bold nil :foreground ,orange-2))))
-   `(rainbow-delimiters-depth-6-face ((,class (:bold nil :foreground ,purple-2))))
-   `(rainbow-delimiters-depth-7-face ((,class (:bold nil :foreground ,white-1))))
-   `(rainbow-delimiters-depth-8-face ((,class (:bold nil :foreground ,yellow-2))))
-   `(rainbow-delimiters-depth-9-face ((,class (:bold nil :foreground ,red-2))))
+   ;; `(rainbow-delimiters-depth-1-face ((,class (:bold nil :foreground ,blue-1))))
+   ;; `(rainbow-delimiters-depth-2-face ((,class (:bold nil :foreground ,green-2))))
+   ;; `(rainbow-delimiters-depth-3-face ((,class (:bold nil :foreground ,magenta-2))))
+   ;; `(rainbow-delimiters-depth-4-face ((,class (:bold nil :foreground ,cyan-3))))
+   ;; `(rainbow-delimiters-depth-5-face ((,class (:bold nil :foreground ,orange-2))))
+   ;; `(rainbow-delimiters-depth-6-face ((,class (:bold nil :foreground ,purple-2))))
+   ;; `(rainbow-delimiters-depth-7-face ((,class (:bold nil :foreground ,white-1))))
+   ;; `(rainbow-delimiters-depth-8-face ((,class (:bold nil :foreground ,yellow-2))))
+   ;; `(rainbow-delimiters-depth-9-face ((,class (:bold nil :foreground ,red-2))))
+   `(rainbow-delimiters-depth-1-face ((,class (:bold nil :foreground ,white-3))))
+   `(rainbow-delimiters-depth-2-face ((,class (:bold nil :foreground ,blue-1))))
+   `(rainbow-delimiters-depth-3-face ((,class (:bold nil :foreground ,green-2))))
+   `(rainbow-delimiters-depth-4-face ((,class (:bold nil :foreground ,magenta-2))))
+   `(rainbow-delimiters-depth-5-face ((,class (:bold nil :foreground ,cyan-3))))
+   `(rainbow-delimiters-depth-6-face ((,class (:bold nil :foreground ,orange-2))))
+   `(rainbow-delimiters-depth-7-face ((,class (:bold nil :foreground ,purple-2))))
+   `(rainbow-delimiters-depth-8-face ((,class (:bold nil :foreground ,white-1))))
+   `(rainbow-delimiters-depth-9-face ((,class (:bold nil :foreground ,yellow-2))))
    `(rainbow-delimiters-unmatched-face ((,class (:foreground ,white-0 :background ,red-3 :bold t))))))
 
 ;; Ensure that themes will be applied even if they have not been customized
@@ -64,6 +73,8 @@
     (unless (custom-theme-p theme)
       (load-theme theme)))
   (custom-set-variables `(custom-enabled-themes (quote ,custom-enabled-themes))))
+
+(set-cursor-color "#ffffff")
 
 (add-hook 'after-init-hook 'reapply-themes)
 

@@ -177,5 +177,48 @@
 ;; A quick way to jump to the definition of a function given its key binding
 (global-set-key (kbd "C-h K") 'find-function-on-key)
 
+(after-load 'lisp-mode
+  (setq lisp-imenu-generic-expression
+        (list
+         (list nil
+               (purecopy (concat "^\\s-*("
+                                 (eval-when-compile
+                                   (regexp-opt
+                                    '("cl-defun" "defun" "defun*" "defsubst" "defmacro"
+                                      "defadvice" "define-skeleton"
+                                      "define-minor-mode" "define-global-minor-mode"
+                                      "define-globalized-minor-mode"
+                                      "define-derived-mode" "define-generic-mode"
+                                      "define-compiler-macro" "define-modify-macro"
+                                      "defsetf" "define-setf-expander"
+                                      "define-method-combination"
+                                      "defgeneric" "defmethod") t))
+                                 "\\s-+\\(\\(\\sw\\|\\s_\\)+\\)"))
+               2)
+         (list (purecopy "Variables")
+               (purecopy (concat "^\\s-*("
+                                 (eval-when-compile
+                                   (regexp-opt
+                                    '("defconst" "defconstant" "defcustom"
+                                      "defparameter" "define-symbol-macro") t))
+                                 "\\s-+\\(\\(\\sw\\|\\s_\\)+\\)"))
+               2)
+         ;; For `defvar', we ignore (defvar FOO) constructs.
+         (list (purecopy "Variables")
+               (purecopy (concat "^\\s-*(defvar\\s-+\\(\\(\\sw\\|\\s_\\)+\\)"
+                                 "[[:space:]\n]+[^)]"))
+               1)
+         (list (purecopy "Types")
+               (purecopy (concat "^\\s-*("
+                                 (eval-when-compile
+                                   (regexp-opt
+                                    '("defgroup" "deftheme" "deftype" "defstruct"
+                                      "defclass" "define-condition" "define-widget"
+                                      "defface" "defpackage") t))
+                                 "\\s-+'?\\(\\(\\sw\\|\\s_\\)+\\)"))
+               2))
+
+        ))
+
 
 (provide 'init-lisp)

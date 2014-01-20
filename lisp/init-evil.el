@@ -44,7 +44,7 @@
   "ee" 'eval-expression
   "<" 'paredit-backward-slurp-sexp
   ">" 'paredit-forward-slurp-sexp
-  "im" 'imenu
+  "i" 'imenu
   "kw" 'delete-window
   "ko" 'delete-other-windows
   "s" 'switch-window

@@ -68,7 +68,7 @@
 
 (require 'init-paredit)
 (require 'init-lisp)
-;(require 'init-slime)
+;; (require 'init-slime)
 (require 'init-clojure)
 ;(require 'init-common-lisp)
 
@@ -102,7 +102,8 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
   (load custom-file))
-
+(setq make-backup-files nil)
+;; (setq backup-directory-alist '(("." . "~/emacs-backups")))
 
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-local" containing personal settings

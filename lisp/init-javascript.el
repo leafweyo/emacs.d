@@ -3,7 +3,6 @@
   (require-package 'js2-mode)
   (require-package 'ac-js2))
 (require-package 'js-comint)
-(require-package 'rainbow-delimiters)
 (require-package 'coffee-mode)
 
 (after-load 'js2-mode
