@@ -42,8 +42,10 @@
   "el" 'eval-last-sexp
   "eb" 'eval-buffer
   "ee" 'eval-expression
-  "<" 'paredit-backward-slurp-sexp
-  ">" 'paredit-forward-slurp-sexp
+  ;; "<" 'paredit-backward-slurp-sexp
+  ;; ">" 'paredit-forward-slurp-sexp
+  "<" 'sp-backward-slurp-sexp
+  ">" 'sp-forward-slurp-sexp
   "i" 'imenu
   "kw" 'delete-window
   "ko" 'delete-other-windows
@@ -54,6 +56,9 @@
 
 (evil-leader/set-key-for-mode 'clojure-mode "ef" 'cider-eval-defun-at-point)
 (evil-leader/set-key-for-mode 'clojure-mode "eb" 'cider-load-current-buffer)
+(evil-leader/set-key-for-mode 'python-mode "ef" 'python-shell-send-defun)
+(evil-leader/set-key-for-mode 'python-mode "eb" 'python-shell-send-buffer)
+;; (evil-leader/set-key-for-mode 'python-mode "eb" 'elpy-shell-send-region-or-buffer)
 
 (global-set-key (kbd "C-;") 'smex)
 (defalias 'list-buffers 'ibuffer)
