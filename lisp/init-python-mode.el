@@ -31,6 +31,11 @@ With prefix arg, prompt for the command to use."
           python-shell-completion-string-code
           "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"))
 
+(defun zx-run-ipython ()
+  (interactive)
+  (zx-use-ipython)
+  (run-python (python-shell-parse-command) nil t))
+
 ;; (elpy-enable)
 ;; (add-hook 'python-mode-hook 'smartparens-mode)
 ;; (add-hook 'inferior-python-mode-hook 'smartparens-mode)

@@ -81,4 +81,15 @@
 (ad-activate 'load)
 (my-keys-mode 1)
 
+(defun vi-open-line-below ()
+  (interactive)
+  (unless (eolp)
+    (end-of-line))
+  (newline-and-indent))
+
+(global-set-key (kbd "M-o") 'vi-open-line-below)
+(global-set-key (kbd "M-l") 'right-char)
+
+
+
 (provide 'init-evil)
